@@ -10,8 +10,13 @@ public class ScaleAndRotateSlider : MonoBehaviour
     private Slider scaleSlider;
     private Slider rotateSlider;
 
+    //Access Scale Button UIs from Scene
     private Button IncreaseButton;
     private Button DecreaseButton;
+
+    //Access Scale Button UIs from Scene
+    private Button MoveUpButton;
+    private Button MoveDownButton;
 
     // Variables to set min and max values of Scale and Rotate
     public float scaleMinValue;
@@ -36,12 +41,19 @@ public class ScaleAndRotateSlider : MonoBehaviour
 
         rotateSlider.onValueChanged.AddListener(RotateSliderUpdate);
 
-        //Find Buttons from Scene
+        //Find Increase and Decrease Scale Buttons from Scene, Add Listener when button is clicked
         IncreaseButton = GameObject.Find("IncreaseButton").GetComponent<Button>();
         IncreaseButton.onClick.AddListener(IncreaseButtonUpdate);
 
         DecreaseButton = GameObject.Find("DecreaseButton").GetComponent<Button>();
         DecreaseButton.onClick.AddListener(DecreaseButtonUpdate);
+
+        //Find Move Up and Down Buttons from Scene, Add Listener when button is clicked
+        MoveUpButton = GameObject.Find("MoveUpButton").GetComponent<Button>();
+        MoveUpButton.onClick.AddListener(MoveUpButtonUpdate);
+
+        MoveDownButton = GameObject.Find("MoveDownButton").GetComponent<Button>();
+        MoveDownButton.onClick.AddListener(MoveDownButtonUpdate);
     }
 
     // Update is called once per frame
@@ -68,6 +80,17 @@ public class ScaleAndRotateSlider : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x - 0.2f, transform.localScale.y - 0.2f, transform.localScale.y - 0.2f);
 
     }
+    public void MoveUpButtonUpdate()
+    {
+        transform.position = new Vector3 (transform.position.x, transform.position.y + 2 , transform.position.z);
+    }
+
+    public void MoveDownButtonUpdate()
+    {
+        transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+    }
+
+
 
     void RotateSliderUpdate(float value)
     {
