@@ -82,12 +82,12 @@ public class ScaleAndRotateSlider : MonoBehaviour
     }
     public void MoveUpButtonUpdate()
     {
-        transform.position = new Vector3 (transform.position.x, transform.position.y + 2 , transform.position.z);
+        transform.position = new Vector3 (transform.position.x, transform.position.y + 0.5f , transform.position.z);
     }
 
     public void MoveDownButtonUpdate()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 2, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
     }
 
 

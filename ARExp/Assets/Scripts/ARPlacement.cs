@@ -13,6 +13,7 @@ public class ARPlacement : MonoBehaviour
 
     private GameObject spawnedObject;
 
+    //public GameObject joystickCanvas;
 
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
@@ -22,7 +23,10 @@ public class ARPlacement : MonoBehaviour
     void Start()
     {
         //Find the AR Raycast Manager from the Scene and assign it to the variable we created
-        aRRaycastManager = FindObjectOfType<ARRaycastManager>(); 
+        aRRaycastManager = FindObjectOfType<ARRaycastManager>();
+
+        //joystickCanvas.SetActive(false);
+    
     }
 
     // Update is called once per frame
@@ -35,6 +39,7 @@ public class ARPlacement : MonoBehaviour
         if (spawnedObject == null && placementPoseIsValid && Input.touchCount >0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             ARPlaceObject();
+            //joystickCanvas.SetActive(true);
         }
         UpdatePlacementPose();
         UpdatePlacementIndicator();
